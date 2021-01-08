@@ -81,9 +81,6 @@ class MainActivity : AppCompatActivity() {
 
         restaurantList.forEach {
             cuisineList.add(it.restaurant.cuisines)
-            //diffHourList.add(getHourByCategory(diffHours).toString())
-            //messages.add(MessageDC(smsId,smsType, number, body, Date(smsDate.toLong()), getHourByCategory(diffHours).toString(), smsDate, number))
-
         }
 
         cuisineList.forEach { cuisines ->
