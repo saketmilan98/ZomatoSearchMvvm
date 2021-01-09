@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
         <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

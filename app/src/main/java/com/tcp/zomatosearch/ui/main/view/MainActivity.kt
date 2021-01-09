@@ -151,6 +151,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun getCurrentLocation() {
+        Tools().showToast("Fetching current location. Please wait...",this)
         getLocationUpdates()
         startLocationUpdates()
     }
