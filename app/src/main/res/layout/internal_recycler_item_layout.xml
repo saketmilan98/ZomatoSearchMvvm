@@ -31,6 +31,7 @@
                 android:id="@+id/iv1_iril"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
+                app:srcCompat="@drawable/placeholder1"
                 app:layout_constraintTop_toTopOf="parent"
                 />
 

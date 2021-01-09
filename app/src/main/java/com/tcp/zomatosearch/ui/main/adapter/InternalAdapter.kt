@@ -1,6 +1,5 @@
 package com.tcp.zomatosearch.ui.main.adapter
 
-import android.text.Html
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,11 +17,12 @@ class InternalAdapter(
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(listRestaurant: List<Restaurant>) {
-            Picasso.get().load(listRestaurant[adapterPosition].restaurant.featured_image).placeholder(R.drawable.placeholder1).error(R.drawable.placeholder1).into(itemView.iv1_iril)
+            if(listRestaurant[adapterPosition].restaurant.featured_image.isNotEmpty())
+                Picasso.get().load(listRestaurant[adapterPosition].restaurant.featured_image).placeholder(R.drawable.placeholder1).error(R.drawable.placeholder1).into(itemView.iv1_iril)
             itemView.tv2_iril.text = listRestaurant[adapterPosition].restaurant.name
             itemView.tv3_iril.text = listRestaurant[adapterPosition].restaurant.location.address
             val ratingText = "<b>${listRestaurant[adapterPosition].restaurant.user_rating.aggregate_rating.toString()}</b>/5"
-            itemView.tv4_iril.text = HtmlCompat.fromHtml(ratingText, FROM_HTML_MODE_LEGACY) //listRestaurant[adapterPosition].restaurant.user_rating.aggregate_rating.toString() + "/5"
+            itemView.tv4_iril.text = HtmlCompat.fromHtml(ratingText, FROM_HTML_MODE_LEGACY)
             itemView.tv5_iril.text = "₹${listRestaurant[adapterPosition].restaurant.average_cost_for_two} for two"
 
         }

@@ -1,5 +1,6 @@
 package com.tcp.zomatosearch.ui.main.viewmodel
 
+import android.location.Location
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,10 +17,10 @@ class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
     private val rootData = MutableLiveData<Resource<RootDataClass>>()
     private val compositeDisposable = CompositeDisposable()
 
-    fun fetchRootData(q : String) {
+    fun fetchRootData(q : String, loc : Location) {
         rootData.postValue(Resource.loading(null))
         compositeDisposable.add(
-            mainRepository.getRootData(q)
+            mainRepository.getRootData(q, loc)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ userList ->

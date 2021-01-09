@@ -3,13 +3,15 @@
     package="com.tcp.zomatosearch">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/cutlery"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/cutlery"
         android:supportsRtl="true"
+        android:name=".app.MyApp"
         android:theme="@style/Theme.ZomatoSearch">
         <activity android:name=".ui.main.view.MainActivity">
             <intent-filter>

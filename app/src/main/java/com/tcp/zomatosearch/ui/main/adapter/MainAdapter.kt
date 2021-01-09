@@ -15,14 +15,14 @@ class MainAdapter(
 ) : RecyclerView.Adapter<MainAdapter.DataViewHolder>() {
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(user: List<CuisineRestaurantDataClass>) {
-            itemView.textViewCuisine.text = "Restaurants serving "+user[adapterPosition].cuisines
+        fun bind(listCuisineRestaurant: List<CuisineRestaurantDataClass>) {
+            itemView.textViewCuisine.text = "Restaurants serving "+listCuisineRestaurant[adapterPosition].cuisines
 
             val adapter = InternalAdapter(arrayListOf())
             itemView.rv1_il.layoutManager = LinearLayoutManager(itemView.rv1_il.context, RecyclerView.VERTICAL,false)
             itemView.rv1_il.adapter = adapter
 
-            adapter.setData(user[adapterPosition].restaurants as ArrayList<Restaurant>)
+            adapter.setData(listCuisineRestaurant[adapterPosition].restaurants as ArrayList<Restaurant>)
             adapter.notifyDataSetChanged()
         }
     }
