@@ -16,7 +16,7 @@ class MainAdapter(
 
     class DataViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(user: List<CuisineRestaurantDataClass>) {
-            itemView.textViewUserName.text = user[adapterPosition].cuisines
+            itemView.textViewCuisine.text = "Restaurants serving "+user[adapterPosition].cuisines
 
             val adapter = InternalAdapter(arrayListOf())
             itemView.rv1_il.layoutManager = LinearLayoutManager(itemView.rv1_il.context, RecyclerView.VERTICAL,false)

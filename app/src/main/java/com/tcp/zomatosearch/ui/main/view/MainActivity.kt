@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -32,10 +33,7 @@ class MainActivity : AppCompatActivity() {
         setupUI()
         setupViewModel()
         setupObserver()
-
-        bt1.setOnClickListener {
-            mainViewModel.fetchRootData(et1.text.toString())
-        }
+        mainViewModel.fetchRootData("")
     }
 
     private fun setupUI() {
@@ -48,6 +46,19 @@ class MainActivity : AppCompatActivity() {
             )
         )
         recyclerView.adapter = adapter
+
+        searchView1.onActionViewExpanded()
+        searchView1.queryHint = resources.getString(R.string.query_hint)
+
+        searchView1.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                mainViewModel.fetchRootData(query!!)
+                return false
+            }
+        })
     }
 
     private fun setupObserver() {
@@ -55,15 +66,31 @@ class MainActivity : AppCompatActivity() {
             when (it.status) {
                 Status.SUCCESS -> {
                     progressBar.visibility = View.GONE
-                    it.data?.let { rootData -> renderList(rootData) }
-                    recyclerView.visibility = View.VISIBLE
+                    it.data?.let { rootData ->
+                        if(rootData.restaurants.isNotEmpty()) {
+                            renderList(rootData)
+                            recyclerView.visibility = View.VISIBLE
+                            status_tv.visibility = View.GONE
+                        }
+                        else{
+                            recyclerView.visibility = View.GONE
+                            status_tv.visibility = View.VISIBLE
+                            status_tv.text = resources.getString(R.string.notfound_text)
+                        }
+                    }
+                    //recyclerView.visibility = View.VISIBLE
+                    //status_tv.visibility = View.GONE
                 }
                 Status.LOADING -> {
                     progressBar.visibility = View.VISIBLE
                     recyclerView.visibility = View.GONE
+                    status_tv.visibility = View.GONE
                 }
                 Status.ERROR -> {
                     //Handle Error
+                    recyclerView.visibility = View.GONE
+                    status_tv.visibility = View.VISIBLE
+                    status_tv.text = resources.getString(R.string.error_text)
                     progressBar.visibility = View.GONE
                     Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                 }

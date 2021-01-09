@@ -3,63 +3,100 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cl1_iril"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cl2_iril"
-        app:layout_constraintTop_toTopOf="parent">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv2_iril"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="Saket Milan"
-            android:textSize="20sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginStart="10dp"
-            />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv3_iril"
-            app:layout_constraintTop_toBottomOf="@+id/tv2_iril"
-            app:layout_constraintStart_toStartOf="parent"
-            android:text="This is message."
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv4_iril"
-            android:layout_marginTop="10dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:text="This is message."
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:layout_marginEnd="10dp"
-            />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:id="@+id/view1_iril"
-        app:layout_constraintTop_toBottomOf="@id/cl2_iril"
-        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@color/black"
-        />
+        app:cardCornerRadius="10dp"
+        android:id="@+id/cv1_iril">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cl2_iril"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/iv1_iril"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv2_iril"
+                android:layout_marginTop="5dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv1_iril"
+                app:layout_constraintStart_toStartOf="parent"
+                android:text="Saket Milan"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginStart="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/tv4_iril"
+                android:layout_marginEnd="20dp"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv3_iril"
+                app:layout_constraintTop_toBottomOf="@+id/tv2_iril"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv5_iril"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="This is message."
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv4_iril"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/iv1_iril"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="This is message."
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_marginEnd="10dp"
+                android:textAlignment="center"
+                android:drawablePadding="2dp"
+                android:drawableStart="@drawable/ic_baseline_star_rate_24"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv5_iril"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv4_iril"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="This is message."
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_marginEnd="10dp"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
